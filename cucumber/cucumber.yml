@@ -1,4 +1,4 @@
-default: -p zalenium
+default: -p chrome
 html: --format --out reports/test-report.html
 bvt: --tags @test
 browserstack : DRIVER=browserstack

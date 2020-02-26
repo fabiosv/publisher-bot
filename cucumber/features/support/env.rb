@@ -8,6 +8,10 @@ require 'rubocop'
 require 'axe/cucumber/step_definitions'
 require 'bddfire'
 require 'rest-client'
+require 'byebug'
+require 'dotenv'
+
+Dotenv.load('default.env')
 
 Capybara.configure do |config|
   config.run_server = false
