@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './my_posts.dart';
 import './groups.dart';
+import './history.dart';
 
 class Home extends StatefulWidget {
   Home();
@@ -21,6 +22,7 @@ class _Home extends State<Home> {
   final List<Widget> _pages = [
     MyPosts(),
     Groups(),
+    History(),
   ];
 
   void _onItemTapped(int index) {
@@ -45,6 +47,10 @@ class _Home extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(Icons.group),
             title: Text('Grupos')
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            title: Text('Histórico')
           )
         ]
       ),
