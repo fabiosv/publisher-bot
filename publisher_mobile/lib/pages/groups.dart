@@ -6,8 +6,8 @@ class Groups extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Container(),
-          title: Text('Grupos')
+        automaticallyImplyLeading: false,
+        title: Text('Grupos')
       ),
       body: Center(child: Text('Lista de Grupos')),
     );

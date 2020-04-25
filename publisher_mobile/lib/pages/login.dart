@@ -30,7 +30,7 @@ class _Login extends State<Login> {
           ),
           Flexible(
             flex: 3,
-            child: Container(
+            child: SingleChildScrollView(child: Container(
               padding: EdgeInsets.all(20.0),
               margin: EdgeInsets.all(5.0),
               child: Form(
@@ -51,6 +51,7 @@ class _Login extends State<Login> {
                         decoration: const InputDecoration(labelText: 'Password'),
                         keyboardType: TextInputType.visiblePassword,
                         validator: validatePassword,
+                        obscureText: true,
                         onSaved: (String val) {
                           _password = val;
                         },
@@ -67,7 +68,7 @@ class _Login extends State<Login> {
                     ],
                   )
               ),
-            )
+            ))
           )
         ]
       ),
