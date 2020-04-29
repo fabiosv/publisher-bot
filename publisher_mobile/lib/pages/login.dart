@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import './home.dart';
+import '../models/User.dart';
+import '../services/user.dart';
 
 class Login extends StatefulWidget {
   Login();
@@ -92,13 +97,26 @@ class _Login extends State<Login> {
       return null;
   }
 
-  void _checkUser() {
-    debugPrint('>>>>>>>>>>>>>>>>>>>>>>>>');
-    debugPrint('email: ($_email)');
-    debugPrint('password: ($_password)');
+  Future _checkUser() async {
     if(_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      Navigator.of(context).pushNamed('/home');
+      debugPrint('>>>>>>>>>>>>>>>>>>>>>>>>');
+      debugPrint('email: ($_email)');
+      debugPrint('password: ($_password)');
+
+      UserAPI.verify(_email, _password).then((User user) {
+        print('>>>>>>>>>>>>>>>==');
+        print(user.uid);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home(
+              user: user
+            )));
+      }).catchError((err) {
+        Fluttertoast.showToast(msg: "Email e/ou senha errada!", backgroundColor: Colors.black, gravity: ToastGravity.CENTER);
+        print(err);
+      });
     } else {
       _autoValidate = true;
     }

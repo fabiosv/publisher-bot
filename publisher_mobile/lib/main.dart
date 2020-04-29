@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'dart:io' show Platform;
 
+import './pages/splash_page.dart';
 import './pages/login.dart';
 import './pages/home.dart';
 import './pages/create_post.dart';
@@ -13,17 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routes = {
-      '/': (BuildContext ctx) => Login(),
+      '/login': (BuildContext ctx) => Login(),
       '/home': (BuildContext ctx) => Home(),
       '/create_post': (BuildContext ctx) => CreatePost(),
     };
 
     if (Platform.isAndroid) {
       return MaterialApp(
-        title: 'My Pixels',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        home: SplashPage(),
         routes: routes,
       );
     } else {
